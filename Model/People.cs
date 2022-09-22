@@ -2,8 +2,10 @@ using System;
 
 namespace Model
 {
-    class People
+    abstract class People
     {
-        
+        int _id_card;
+        int _fullname;
+
     }
 }
