@@ -1,38 +1,52 @@
 using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 namespace Project02
 {
-    abstract class People
+ class People
     {
-        private int _id_card;
+        private string _id_card;
         private string _fullname;
-        private string _birthday;
+        private DateTime _birthday;
         private int _age;
         private string _address;
         private string _email;
         private string _phone;
 
+        private List<People> list = null;
 
-        public string ToString(string fullname, int age, string phone){
-            string information = $"{fullname}, {age}, {phone}";
-            return information;
-        }
-
-        public int Id_card
+        public string Id_card
         {
             get { return _id_card; }
-            set { _id_card = value; }
-        }
-        
-    
+            set { string s = value;
+                
+                while(s.Length != 9) {
+                    Console.Write("Error! Please enter ID Card has 9 digits!");
+                    Console.Write("Input ID Card: ");
+                    
+                    s =Console.ReadLine();
+                }
+                _id_card = s;
+            } 
+             }    
+
         public string Fullname
         {
             get { return _fullname; }
-            set { _fullname = value; }
+            set { string f = value;
+                while (f.Length > 50)
+                {
+                    System.Console.WriteLine("Error! please enter your full name < 50 characters !");
+                    System.Console.Write("Enter your full name: ");
+                    f = Console.ReadLine();
+                }
+                _fullname = f;
+             }
         }
         
-        public string Birthday
+        public DateTime Birthday
         {
-            get { return _birthday; }
+            get => _birthday; 
             set { _birthday = value; }
         }
 
@@ -46,23 +60,115 @@ namespace Project02
         public string Address
         {
             get { return _address; }
-            set { _address = value; }
+            set { string a = value;
+            while(a == null){
+                System.Console.WriteLine("Error! your address cant't be null.");
+                System.Console.Write("Enter your Address: ");
+                a = Console.ReadLine();
+            }
+            _address = a;
+             }
         }
         
     
         public string Email
         {
             get { return _email; }
-            set { _email = value; }
+            set { string e = value;
+                Boolean checkEMail = isEmail(e);
+                while(checkEMail == false){
+                    System.Console.WriteLine("Error! Please input valid email address!");
+                    System.Console.Write("Enter your email: ");
+                    e = Console.ReadLine();
+                }
+                _email = e;
+             }
         }
-                
+            
         public string Phone
         {
-            get { return _email; }
-            set { _email = value; }
+            get { return _phone; }
+            set { _phone = value; }
+        }
+        
+        
+        public People(){}
+        public People(string Id_card, string Fullname, DateTime Birthday, int Age, string Address, string Email, string Phone){
+            this.Id_card = Id_card;
+            this.Fullname = Fullname;
+            this.Birthday = Birthday;
+            this.Age = Age;
+            this.Address = Address;
+            this.Email = Email;
+            this.Phone = Phone;
         }
 
-        
+
+        public override string ToString(){
+            return string.Format(this.Fullname, this.getAge(Birthday), this.Phone);
+        }
+
+         public int getAge(DateTime birthday){
+            var today = DateTime.Today;
+            int age = today.Year - Birthday.Year;
+            if(today.Month < Birthday.Month || today.Month == Birthday.Month && today.Day < Birthday.Day){
+                age--;
+                return age;
+            }
+        }
+
+        public bool isEmail(string Email){
+            Email = Email??string.Empty;
+            string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                  @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                  @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+
+                  Regex checkmail = new Regex(emailRegex);
+                  if(checkmail.IsMatch(Email)){
+                    return true;
+                  } else {
+                    return false;
+                  }
+        }
+
+        public static bool hasSpecialChar(string input){
+            Regex sp_char = new Regex("[^A-Za-z0-9]");
+            bool hasSpecialChar = sp_char.IsMatch(input);
+            return hasSpecialChar;
+        }
+
+        public void inputPeople(){
+            list = new List<People>();
+            People people = new People();
+            System.Console.Write("Please enter your id card: ");
+            people.Id_card = Console.ReadLine(); 
+
+            System.Console.Write("Please enter your full name: ");
+            people.Fullname = Console.ReadLine(); 
+
+            System.Console.Write("Please enter your birthday: ");
+            people.Birthday = Convert.ToDateTime(Console.ReadLine());
+
+            System.Console.Write("Please enter your address(*): ");
+            people.Address = Console.ReadLine();
+
+            System.Console.Write("Please enter your emial: ");
+            people.Email = Console.ReadLine();
+
+            System.Console.Write("Please enter your phone: ");
+            people.Phone= Console.ReadLine();
+
+              list.Add(people);
+        }
+
+        public void printInfo(){
+            Console.WriteLine(this.Fullname, this.Birthday);
+        }
+
+        public People(string fullname){
+            this.Fullname = fullname;
+        }
+
         
     }
 }
