@@ -113,8 +113,8 @@ namespace Project02
             int age = today.Year - Birthday.Year;
             if(today.Month < Birthday.Month || today.Month == Birthday.Month && today.Day < Birthday.Day){
                 age--;
-                return age;
             }
+            return age;
         }
 
         public bool isEmail(string Email){

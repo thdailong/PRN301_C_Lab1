@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\PC\\Desktop\\ChuyenNganhKy5\\PRN211\\Code_C#_VSCode\\PRN301_C_Lab1\\C_Lab1.csproj": {}
+    "/Users/phuochuy/Desktop/PRN301_C_Lab1/C_Lab1.csproj": {}
   },
   "projects": {
-    "c:\\Users\\PC\\Desktop\\ChuyenNganhKy5\\PRN211\\Code_C#_VSCode\\PRN301_C_Lab1\\C_Lab1.csproj": {
+    "/Users/phuochuy/Desktop/PRN301_C_Lab1/C_Lab1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\PC\\Desktop\\ChuyenNganhKy5\\PRN211\\Code_C#_VSCode\\PRN301_C_Lab1\\C_Lab1.csproj",
+        "projectUniqueName": "/Users/phuochuy/Desktop/PRN301_C_Lab1/C_Lab1.csproj",
         "projectName": "C_Lab1",
-        "projectPath": "c:\\Users\\PC\\Desktop\\ChuyenNganhKy5\\PRN211\\Code_C#_VSCode\\PRN301_C_Lab1\\C_Lab1.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\PC\\Desktop\\ChuyenNganhKy5\\PRN211\\Code_C#_VSCode\\PRN301_C_Lab1\\obj\\",
+        "projectPath": "/Users/phuochuy/Desktop/PRN301_C_Lab1/C_Lab1.csproj",
+        "packagesPath": "/Users/phuochuy/.nuget/packages/",
+        "outputPath": "/Users/phuochuy/Desktop/PRN301_C_Lab1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/phuochuy/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }
