@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "/Users/phuochuy/.nuget/packages/": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/phuochuy/Desktop/PRN301_C_Lab1/C_Lab1.csproj",
+      "projectUniqueName": "c:\\Users\\Admin\\Desktop\\PRN301_C_Lab1\\C_Lab1.csproj",
       "projectName": "C_Lab1",
-      "projectPath": "/Users/phuochuy/Desktop/PRN301_C_Lab1/C_Lab1.csproj",
-      "packagesPath": "/Users/phuochuy/.nuget/packages/",
-      "outputPath": "/Users/phuochuy/Desktop/PRN301_C_Lab1/obj/",
+      "projectPath": "c:\\Users\\Admin\\Desktop\\PRN301_C_Lab1\\C_Lab1.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Admin\\Desktop\\PRN301_C_Lab1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/phuochuy/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

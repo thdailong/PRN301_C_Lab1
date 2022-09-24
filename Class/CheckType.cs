@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace Lab02
+namespace Project02
 {
     public class CheckType
     {
