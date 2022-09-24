@@ -1,4 +1,5 @@
 ﻿using System;
+using Project02;
 
 namespace C_Lab1
 {
@@ -6,7 +7,13 @@ namespace C_Lab1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+          TestSubject();
+        }
+        static void TestSubject(){
+              Subject s = new Subject();
+        s.inputSubject();
+        s.printInfo(s);
+
         }
     }
 }
