@@ -24,7 +24,7 @@ namespace Project02
                     Console.Write("Error! Please enter ID Card has 9 digits!");
                     Console.Write("Input ID Card: ");
                     
-                    s =Console.ReadLine();
+                    s = Console.ReadLine();
                 }
                 _id_card = s;
             } 
@@ -123,12 +123,12 @@ namespace Project02
                   @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                   @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
 
-                  Regex checkmail = new Regex(emailRegex);
-                  if(checkmail.IsMatch(Email)){
-                    return true;
-                  } else {
-                    return false;
-                  }
+            Regex checkmail = new Regex(emailRegex);
+            if(checkmail.IsMatch(Email)){
+            return true;
+            } else {
+            return false;
+            }
         }
 
         public static bool hasSpecialChar(string input){
@@ -138,27 +138,23 @@ namespace Project02
         }
 
         public void inputPeople(){
-            list = new List<People>();
-            People people = new People();
-            System.Console.Write("Please enter your id card: ");
-            people.Id_card = Console.ReadLine(); 
+            System.Console.Write("Please enter id card: ");
+            Id_card = Console.ReadLine(); 
 
-            System.Console.Write("Please enter your full name: ");
-            people.Fullname = Console.ReadLine(); 
+            System.Console.Write("Please enter full name: ");
+            Fullname = Console.ReadLine(); 
 
-            System.Console.Write("Please enter your birthday: ");
-            people.Birthday = Convert.ToDateTime(Console.ReadLine());
+            System.Console.Write("Please enter birthday: ");
+            Birthday = Convert.ToDateTime(Console.ReadLine());
 
-            System.Console.Write("Please enter your address(*): ");
-            people.Address = Console.ReadLine();
+            System.Console.Write("Please enter address(*): ");
+            Address = Console.ReadLine();
 
-            System.Console.Write("Please enter your emial: ");
-            people.Email = Console.ReadLine();
+            System.Console.Write("Please enter email: ");
+            Email = Console.ReadLine();
 
-            System.Console.Write("Please enter your phone: ");
-            people.Phone= Console.ReadLine();
-
-              list.Add(people);
+            System.Console.Write("Please enter phone: ");
+            Phone= Console.ReadLine();
         }
 
         public void printInfo(){
@@ -169,6 +165,6 @@ namespace Project02
             this.Fullname = fullname;
         }
 
-        
     }
+
 }
