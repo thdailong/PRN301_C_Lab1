@@ -9,7 +9,7 @@ namespace Project02
         {
             while (true)
             {
-                string strRegex = @"A12\d{3}$";
+                string strRegex = @"A12\d{2}[1-9]$";
                 Regex re = new Regex(strRegex);
                 if (re.IsMatch(str))
                 {
