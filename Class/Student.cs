@@ -50,14 +50,14 @@ namespace Project02
 
                 public bool isRollName(string rollname){
                         rollname = rollname??string.Empty;
-                        string rollnameRegex = @"^([A]+[1]+[2]+[0-9]{1}[0-9]{1}[1-9]{1})$";
+                        string rollnameRegex = @"^(A12+[0-9][0-9][1-9])$";
                         var checkrollName = new Regex(rollnameRegex, RegexOptions.IgnoreCase);
                         return checkrollName.IsMatch(rollname);
                 }
 
                 public bool isClassNo(string classno){
                     classno = classno??string.Empty;
-                    string classnoRegex = @"(CP|DI|DM)[1-9][0-9]{3}[0-9]{2}(G|H|I|J|K|F|M)[a-zA-Z0-9]{2}";
+                    string classnoRegex = @"(CP|DI|DM)[1-9][0-9]{3}(0?[1-9]|11|12|10)(G|H|I|J|K|F|M)[a-zA-Z0-9]{2}";
                     var checkClassno = new Regex(classnoRegex, RegexOptions.IgnoreCase);
                     return checkClassno.IsMatch(classno);
                 }
@@ -85,21 +85,17 @@ namespace Project02
                 //     return sum / num;
                 // }
 
-                public void inputStudent(){
-                    Student student = new Student();
-                    System.Console.Write("Please enter your rollname: ");
-                    student.Rollname = Console.ReadLine();
-                    System.Console.WriteLine("Please enter your classno: "); 
-                    student.Classno = Console.ReadLine();
+                public override void printInfo(){
+                    System.Console.WriteLine($"{Rollname}, {Classno}");
                 }
 
-            class Program{
-                static void Main(string[] args)
-                {
-                    Student st = new Student();
-                    st.inputStudent();
+                public void inputStudent(){
+                    base.inputPeople();
+                    System.Console.Write("Please enter your rollname: ");
+                    Rollname = Console.ReadLine();
+                    System.Console.Write("Please enter your classno: "); 
+                    Classno = Console.ReadLine();
                 }
-            }
 
    }
                 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 namespace Project02
 {
- class People
+ abstract class People
     {
         private string _id_card;
         private string _fullname;
@@ -11,8 +11,6 @@ namespace Project02
         private string _address;
         private string _email;
         private string _phone;
-
-        private List<People> list = null;
 
         public string Id_card
         {
@@ -121,7 +119,8 @@ namespace Project02
 
 
         public override string ToString(){
-            return string.Format(this.Fullname, this.getAge(Birthday), this.Phone);
+            string ts = $"{Fullname}, {getAge(Birthday)}, {Phone}";
+            return ts;
         }
 
          public int getAge(DateTime birthday){
@@ -157,32 +156,29 @@ namespace Project02
         }
 
         public void inputPeople(){
-            list = new List<People>();
-            People people = new People();
+    
             System.Console.Write("Please enter your id card: ");
-            people.Id_card = Console.ReadLine(); 
+            Id_card = Console.ReadLine(); 
 
             System.Console.Write("Please enter your full name: ");
-            people.Fullname = Console.ReadLine(); 
+            Fullname = Console.ReadLine(); 
 
             System.Console.Write("Please enter your birthday(as mm/dd/yyyy): ");
-            people.Birthday = Convert.ToDateTime(Console.ReadLine());
+            Birthday = Convert.ToDateTime(Console.ReadLine());
     
             System.Console.Write("Please enter your address(*): ");
-            people.Address = Console.ReadLine();
+            Address = Console.ReadLine();
 
             System.Console.Write("Please enter your email: ");
-            people.Email = Console.ReadLine();
+            Email = Console.ReadLine();
 
             System.Console.Write("Please enter your phone: ");
-            people.Phone= Console.ReadLine();
+            Phone= Console.ReadLine();
 
-              list.Add(people);
+            
         }
 
-        public void printInfo(){
-            Console.WriteLine($"Fullname: {this.Fullname}, Birthday: {this.Birthday}");
-        }
+        public abstract void printInfo();
 
         public People(string fullname){
             this.Fullname = fullname;
