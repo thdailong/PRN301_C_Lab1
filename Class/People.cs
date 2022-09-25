@@ -8,7 +8,6 @@ namespace Project02
         private string _id_card;
         private string _fullname;
         private DateTime _birthday;
-        private int _age;
         private string _address;
         private string _email;
         private string _phone;
@@ -21,10 +20,10 @@ namespace Project02
             set { string s = value;
                 
                 while(s.Length != 9) {
-                    Console.Write("Error! Please enter ID Card has 9 digits!");
+                    Console.WriteLine("Error! Please enter ID Card has 9 digits! ");
                     Console.Write("Input ID Card: ");
                     
-                    s =Console.ReadLine();
+                    s = Console.ReadLine();
                 }
                 _id_card = s;
             } 
@@ -47,22 +46,30 @@ namespace Project02
         public DateTime Birthday
         {
             get => _birthday; 
-            set { _birthday = value; }
+            set { _birthday = value;
+                DateTime b = value;
+                var today = DateTime.Today;
+                DateTime limit = new DateTime(1900, 1, 1);    
+                int x = (limit.Year *100 + limit.Month) * 100 + limit.Day;
+                int y = (today.Year *100 + today.Month) * 100 + today.Day;
+                int z = (b.Year *100 + b.Month) * 100 + b.Day;
+             // b.Day >= limit.Day && b.Month >= limit.Month && b.Year >= limit.Year && b.Day <= today.Day && b.Month <= today.Month && b.Year <= today.Year
+                while(z < x || y < z){
+                    System.Console.WriteLine("Your birthday must more than or equal 01/01/1900 and less than today, please try again!");
+                    System.Console.Write("Enter your birthday: ");
+                    b = Convert.ToDateTime(Console.ReadLine());
+                    z = (b.Year *100 + b.Month) * 100 + b.Day;
+                }
+                    _birthday = b;
+            
+             }
         }
-
-        public int Age
-        {
-            get { return _age; }
-            set { _age = value; }
-        }
-        
-
         public string Address
         {
             get { return _address; }
             set { string a = value;
-            while(a == null){
-                System.Console.WriteLine("Error! your address cant't be null.");
+            while(a.Length == 0){
+                System.Console.WriteLine("Error! your address cant't be blank.");
                 System.Console.Write("Enter your Address: ");
                 a = Console.ReadLine();
             }
@@ -80,6 +87,7 @@ namespace Project02
                     System.Console.WriteLine("Error! Please input valid email address!");
                     System.Console.Write("Enter your email: ");
                     e = Console.ReadLine();
+                    checkEMail = isEmail(e);
                 }
                 _email = e;
              }
@@ -88,16 +96,24 @@ namespace Project02
         public string Phone
         {
             get { return _phone; }
-            set { _phone = value; }
+            set { string p = value;
+            Boolean checkPhone = isNumberPhone(p);
+            while (checkPhone == false){
+                 System.Console.WriteLine("Error! Please input valid number phone!");
+                    System.Console.Write("Enter your number phone: ");
+                    p = Console.ReadLine();
+                    checkPhone = isNumberPhone(p);
+            }
+                _phone = p;
+            }
         }
         
         
         public People(){}
-        public People(string Id_card, string Fullname, DateTime Birthday, int Age, string Address, string Email, string Phone){
+        public People(string Id_card, string Fullname, DateTime Birthday, string Address, string Email, string Phone){
             this.Id_card = Id_card;
             this.Fullname = Fullname;
             this.Birthday = Birthday;
-            this.Age = Age;
             this.Address = Address;
             this.Email = Email;
             this.Phone = Phone;
@@ -113,22 +129,25 @@ namespace Project02
             int age = today.Year - Birthday.Year;
             if(today.Month < Birthday.Month || today.Month == Birthday.Month && today.Day < Birthday.Day){
                 age--;
-                return age;
             }
+                 return age;
         }
 
         public bool isEmail(string Email){
             Email = Email??string.Empty;
-            string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
-                  @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
-                  @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            string emailRegex = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + 
+                                @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + 
+                                @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+                    var checkmail  = new Regex(emailRegex, RegexOptions.IgnoreCase);
+                    return checkmail.IsMatch(Email);
+        }
 
-                  Regex checkmail = new Regex(emailRegex);
-                  if(checkmail.IsMatch(Email)){
-                    return true;
-                  } else {
-                    return false;
-                  }
+
+        public bool isNumberPhone(string Phone){
+            Phone = Phone??string.Empty;
+            string phoneRegex = @"(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b";
+            var checkphone = new Regex(phoneRegex, RegexOptions.IgnoreCase);
+            return checkphone.IsMatch(Phone);
         }
 
         public static bool hasSpecialChar(string input){
@@ -146,13 +165,13 @@ namespace Project02
             System.Console.Write("Please enter your full name: ");
             people.Fullname = Console.ReadLine(); 
 
-            System.Console.Write("Please enter your birthday: ");
+            System.Console.Write("Please enter your birthday(as mm/dd/yyyy): ");
             people.Birthday = Convert.ToDateTime(Console.ReadLine());
-
+    
             System.Console.Write("Please enter your address(*): ");
             people.Address = Console.ReadLine();
 
-            System.Console.Write("Please enter your emial: ");
+            System.Console.Write("Please enter your email: ");
             people.Email = Console.ReadLine();
 
             System.Console.Write("Please enter your phone: ");
@@ -162,13 +181,19 @@ namespace Project02
         }
 
         public void printInfo(){
-            Console.WriteLine(this.Fullname, this.Birthday);
+            Console.WriteLine($"Fullname: {this.Fullname}, Birthday: {this.Birthday}");
         }
 
         public People(string fullname){
             this.Fullname = fullname;
         }
 
-        
+
+    // class Program
+    // {
+    //     static void Main(string[] args)
+    //     {   
+    //     }
+    // }
     }
 }
