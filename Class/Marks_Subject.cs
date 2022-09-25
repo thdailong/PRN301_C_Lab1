@@ -46,6 +46,8 @@ namespace Project02
                 Console.Write("Enter again: ");
             }
         }
+
+        
     }
 
     class Marks_Subject : Marks, IMarks
