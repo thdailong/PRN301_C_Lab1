@@ -1,1 +1,4 @@
-obj
+\bin
+\obj
+.DS_Store
+C_Lab1.csproj
