@@ -69,9 +69,9 @@ namespace Project02
             // Subject s = new Subject(subject_code, subject_name, theory, practice);
         }
 
-        public void printInfo(Subject s)
+        public void printInfo()
         {
-            Console.WriteLine(s.ToString());
+            Console.WriteLine(ToString());
         }
 
 
