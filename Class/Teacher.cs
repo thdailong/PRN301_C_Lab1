@@ -28,11 +28,10 @@ namespace Project02 {
             }
         }
 
-        public Teacher(string Id_card, string Fullname, DateTime Birthday, int Age, string Address, string Email, string Phone, string TeacherCode, DateTime JoinedDay){
+        public Teacher(string Id_card, string Fullname, DateTime Birthday, string Address, string Email, string Phone, string TeacherCode, DateTime JoinedDay){
             this.Id_card = Id_card;
             this.Fullname = Fullname;
             this.Birthday = Birthday;
-            this.Age = Age;
             this.Address = Address;
             this.Email = Email;
             this.Phone = Phone;
@@ -59,6 +58,11 @@ namespace Project02 {
             } else {
                 return false;
             }
+        }
+
+        public override void printInfo()
+        {
+            
         }
     }
 }
